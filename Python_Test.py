@@ -5,7 +5,7 @@ Spyder Editor
 This is a temporary script file.
 """
 
-###read sequence and input 
+##### read sequence and input #####
 import re, csv
 
 def read_seq(fn):
@@ -26,7 +26,7 @@ def read_seq(fn):
 #seq = read_seq(file)
 #print (''.join(seq), '\n')
 
-###complementary sequence bases method 1
+##### complementary sequence bases method 1 #####
 def complementary_seq1(seq):
     total = list()
     for base in seq:
@@ -49,12 +49,12 @@ def complementary_seq1(seq):
     return total
     
 ##print test   
-file = "TP53.txt"
-seq = read_seq(file)
-c_seq = complementary_seq1(seq)
-print (''.join(c_seq))
+#file = "TP53.txt"
+#seq = read_seq(file)
+#c_seq = complementary_seq1(seq)
+#print (''.join(c_seq))
 
-###complementary sequence bases method 2
+##### complementary sequence bases method 2 #####
 def complementary_seq2(seq):
     c_seq = list()
     c_table = {'A':'T', 'T':'A', 'C':'G', 'G':'C', 'a':'t', 't':'a', 'c':'g', 'g':'c'}
@@ -69,5 +69,37 @@ def complementary_seq2(seq):
 #c_seq = complementary_seq1(seq)
 #print (''.join(c_seq))
     
+##### reverse sequence method 1 #####
+##print test    
+#file = "TP53.txt"
+#seq = read_seq(file)
+#c_seq = complementary_seq1(seq)
+#rev_seq = reverse_seq(c_seq)
+#print (''.join(rev_seq))
+#print (c_seq[::-1])
     
-###translat the sequence
+##### reverse sequence method 2 #####
+def reverse_seq2(c_seq):
+    r = []
+    for c in c_seq:
+        r.insert(0, c)
+    return r
+##print test    
+#file = "TP53.txt"
+#seq = read_seq(file)
+#c_seq = complementary_seq1(seq)
+#reverse_seq = reverse_seq2(c_seq)
+#print(''.join(reverse_seq))
+
+##### reverse sequence method 3 #####
+def reverse_seq3(c_seq):
+    c_seq.reverse()
+    
+    return c_seq
+##print test
+file = "TP53.txt"
+seq = read_seq(file)
+c_seq = complementary_seq1(seq)
+reverse_seq = reverse_seq3(c_seq)
+print(''.join(reverse_seq))
+##### translat the sequence #####
