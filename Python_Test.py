@@ -6,7 +6,7 @@ This is a temporary script file.
 """
 
 ##### read sequence and input #####
-import re, csv
+import re, csv, random
 
 def read_seq(fn):
     with open(fn, 'rt') as f:
@@ -109,25 +109,53 @@ def read_t_table(fn):
         t_table = dict()
         for words in csv.reader(f, delimiter = "\t"):
             t_table[words[0]] = {"one":words[1], "three":words[2]}
+   
     return t_table
 ##print test
 #print (''.join(read_t_table))
 
-##### translat the sequence 3 aa in a group  #####
-def translation_seq(seq):
+##### translate the sequence 3 aa in a group  #####
+def translation_seq_3_aa_in_a_group(seq):
     codons_total = list ()
     codons = [seq[i:i+3] for i in range(0, len(seq), 3)]
     codons_total += codons
+    
     return codons_total
-    #print (len(codons), "\t")
-    #print (seq)
+##print test
+#file = "TP53.txt"
+#seq = read_seq(file)
+#protein_seq = translation_seq_3_aa_in_a_group(seq)
+#print (protein_seq)
+
+
+##### translate the sequence arrange #####
+def translate_the_sequence_arrange(codons_total):
+    all_in_one = str()
+    not_in_one = []
+    
+    for unit in (codons_total):
+        all_in_one = ''.join(unit)
+        not_in_one.append(all_in_one)
+    
+    return not_in_one
+##print test
+#file = "TP53.txt"
+#seq = read_seq(file)
+#protein_seq = translation_seq_3_aa_in_a_group(seq)
+#arrange_seq = translate_the_sequence_arrange(protein_seq)
+#print (arrange_seq)
+
+##### translate the sequence #####
+def translate_the_sequence(not_in_one):
+    translate_seq = list()
+    for codons in not_in_one:
+        translate_seq.append(t_table[codons])
+
+    return translate_seq
+##print test
 file = "TP53.txt"
 seq = read_seq(file)
-protein_seq = translation_seq(seq)
-print (protein_seq)
-
-
-    #protein_codon = list ()
-    #for base in codons:
-    #    protein_codon.append([t_table[base] for base in codons])
-    #return 
+protein_seq = translation_seq_3_aa_in_a_group(seq)
+arrange_seq = translate_the_sequence_arrange(protein_seq)
+protein_seq = translate_the_sequence(arrange_seq)
+print (protein_seq)  
