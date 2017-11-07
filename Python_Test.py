@@ -97,9 +97,37 @@ def reverse_seq3(c_seq):
     
     return c_seq
 ##print test
+#file = "TP53.txt"
+#seq = read_seq(file)
+#c_seq = complementary_seq1(seq)
+#reverse_seq = reverse_seq3(c_seq)
+#print(''.join(reverse_seq3))
+
+##### read T_table #####
+def read_t_table(fn):
+    with open("T_table", "r") as f:
+        t_table = dict()
+        for words in csv.reader(f, delimiter = "\t"):
+            t_table[words[0]] = {"one":words[1], "three":words[2]}
+    return t_table
+##print test
+#print (''.join(read_t_table))
+
+##### translat the sequence 3 aa in a group  #####
+def translation_seq(seq):
+    codons_total = list ()
+    codons = [seq[i:i+3] for i in range(0, len(seq), 3)]
+    codons_total += codons
+    return codons_total
+    #print (len(codons), "\t")
+    #print (seq)
 file = "TP53.txt"
 seq = read_seq(file)
-c_seq = complementary_seq1(seq)
-reverse_seq = reverse_seq3(c_seq)
-print(''.join(reverse_seq))
-##### translat the sequence #####
+protein_seq = translation_seq(seq)
+print (protein_seq)
+
+
+    #protein_codon = list ()
+    #for base in codons:
+    #    protein_codon.append([t_table[base] for base in codons])
+    #return 
