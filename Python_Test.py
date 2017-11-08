@@ -105,7 +105,7 @@ def reverse_seq3(c_seq):
 
 ##### read T_table #####
 def read_t_table(fn):
-    with open("T_table", "r") as f:
+    with open(fn, "r") as f:
         t_table = dict()
         for words in csv.reader(f, delimiter = "\t"):
             t_table[words[0]] = {"one":words[1], "three":words[2]}
@@ -113,6 +113,9 @@ def read_t_table(fn):
     return t_table
 ##print test
 #print (''.join(read_t_table))
+#file = "T_table.csv"
+#t_table = read_t_table(file)
+#print (t_table)
 
 ##### translate the sequence 3 aa in a group  #####
 def translation_seq_3_aa_in_a_group(seq):
@@ -145,6 +148,9 @@ def translate_the_sequence_arrange(codons_total):
 #arrange_seq = translate_the_sequence_arrange(protein_seq)
 #print (arrange_seq)
 
+##### translate the sequence int #####
+#def translate_the_sequence_int(not_in_one):
+    
 ##### translate the sequence #####
 def translate_the_sequence(not_in_one):
     translate_seq = list()
@@ -153,9 +159,14 @@ def translate_the_sequence(not_in_one):
 
     return translate_seq
 ##print test
+file = "T_table.csv"
+t_table = read_t_table(file)
+print (t_table)
+
 file = "TP53.txt"
 seq = read_seq(file)
 protein_seq = translation_seq_3_aa_in_a_group(seq)
 arrange_seq = translate_the_sequence_arrange(protein_seq)
 protein_seq = translate_the_sequence(arrange_seq)
 print (protein_seq)  
+
