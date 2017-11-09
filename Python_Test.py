@@ -139,7 +139,10 @@ def translate_the_sequence_arrange(codons_total):
     for unit in (codons_total):
         all_in_one = ''.join(unit)
         not_in_one.append(all_in_one)
-    
+    final_seq_1 = not_in_one[-1]
+    final_seq_2 = not_in_one[-2]
+    if not len(final_seq_1) == len(final_seq_2):
+        del not_in_one[-1]
     return not_in_one
 ##print test
 #file = "TP53.txt"
@@ -159,6 +162,29 @@ def translate_the_sequence(not_in_one):
 
     return translate_seq
 ##print test
+#file = "T_table.csv"
+#t_table = read_t_table(file)
+#print (t_table)
+
+#file = "TP53.txt"
+#seq = read_seq(file)
+#protein_seq = translation_seq_3_aa_in_a_group(seq)
+#arrange_seq = translate_the_sequence_arrange(protein_seq)
+#protein_seq = translate_the_sequence(arrange_seq)
+#print (protein_seq)  
+
+##### pull out one code #####
+#def pull_out_on_code(translate_seq):
+#    one_code_seq_1 = str()
+#    one_code_seq_2 = []
+#    
+#    for item in (translate_seq):
+#        one_code_seq_1 = ''.join(item)
+#        one_code_seq_2.append(one_code_seq_1)
+#        
+#    return one_code_seq_2
+
+##print test
 file = "T_table.csv"
 t_table = read_t_table(file)
 print (t_table)
@@ -168,5 +194,5 @@ seq = read_seq(file)
 protein_seq = translation_seq_3_aa_in_a_group(seq)
 arrange_seq = translate_the_sequence_arrange(protein_seq)
 protein_seq = translate_the_sequence(arrange_seq)
-print (protein_seq)  
-
+#one_code_seq = pull_out_on_code(protein_seq)
+print (protein_seq[-2] ["one"])
