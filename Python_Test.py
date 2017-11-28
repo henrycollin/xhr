@@ -174,15 +174,15 @@ def translate_the_sequence(not_in_one):
 #print (protein_seq)  
 
 ##### pull out one code #####
-#def pull_out_on_code(translate_seq):
-#    one_code_seq_1 = str()
-#    one_code_seq_2 = []
-#    
-#    for item in (translate_seq):
-#        one_code_seq_1 = ''.join(item)
-#        one_code_seq_2.append(one_code_seq_1)
-#        
-#    return one_code_seq_2
+def pull_out_on_code(translate_seq):
+    one_code_seq_1 = str()
+    one_code_seq_2 = []
+    
+    for item in (translate_seq):
+        one_code_seq_1 = ''.join(item)
+        one_code_seq_2.append(one_code_seq_1)
+        
+    return one_code_seq_2
 
 ##print test
 file = "T_table.csv"
@@ -194,5 +194,6 @@ seq = read_seq(file)
 protein_seq = translation_seq_3_aa_in_a_group(seq)
 arrange_seq = translate_the_sequence_arrange(protein_seq)
 protein_seq = translate_the_sequence(arrange_seq)
-#one_code_seq = pull_out_on_code(protein_seq)
+one_code_seq = pull_out_on_code(protein_seq)
+
 print (protein_seq[-2] ["one"])
