@@ -80,7 +80,7 @@ file2.write(line5)
 file2.close()
 
 
-def clustal_input_file_pir_plus_pir():
+def clustal_omega_input_file_pir_plus_pir_fusion():
     with open ("tamplate_imformation.pir", "rt") as f:
         modeller_input_file_A_chain = open ("modeller_input_file_A_chain.txt", "w")
         modeller_input_file_B_chain = open ("modeller_input_file_B_chain.txt", "w")
@@ -88,7 +88,6 @@ def clustal_input_file_pir_plus_pir():
         h = ''.join(str(e) for e in g)
         seq1 = list()
         seq2 = list()
-        seq3 = str()
         for line in f:
             seq1.append(line)
         for line in h.split("*"):
@@ -102,5 +101,43 @@ def clustal_input_file_pir_plus_pir():
     modeller_input_file_A_chain.close
     modeller_input_file_B_chain.write(file_prepare_B_chain)
     modeller_input_file_B_chain.close
-        
-        
+    
+def Target_SLA_txt_file_output_information_and_sequence(fn):
+    #input_file = input("Enter the path of your SLA sequence file (ex.C:Users\Desttop\input_file.txt):")
+    #with open (input_file, "r+") as f:
+    #with open ("C:\\Users\\bio608\\Documents\\GitHub\\xhr\\MHC_IPD0006004_Sus_scrofa_MHC_antigen_(DRB1).txt", "r+") as f:
+    with open (fn, "rt") as f:
+        seq1 = list()
+        seq2 = list()
+        seq3 = []
+        seq4 = []
+        seq5 = []
+        seq6 = []
+        for item in f:
+            seq1.append(item)
+        string = ''.join(str(e) for e in seq1)
+        for item in string.split(">"):
+            seq2.append(item)
+        SLA_seq_DRA = ''.join(str(e) for e in seq2[1])
+        SLA_seq_DRB = ''.join(str(e) for e in seq2[2])
+        for item in SLA_seq_DRA.split("\n"):
+            seq3.append(item)
+        for item in SLA_seq_DRB.split("\n"):
+            seq4.append(item)
+    seq3.remove(seq3[0])
+    seq4.remove(seq4[0])
+    for item in SLA_seq_DRA.split("\n"):
+        seq5.append(item)
+    for item in SLA_seq_DRB.split("\n"):
+        seq6.append(item)
+    Target_SLA_sequence_DRA = seq3
+    Target_SLA_sequence_DRB = seq4
+    Target_SLA_imformation_DRA = seq5[0]
+    Target_SLA_imformation_DRB = seq6[0]
+    
+    return Target_SLA_sequence_DRA, Target_SLA_sequence_DRB, Target_SLA_imformation_DRA, Target_SLA_imformation_DRB
+
+
+file = "C:\\Users\\bio608\\Documents\\GitHub\\xhr\\MHC_IPD0006004_Sus_scrofa_MHC_antigen_(DRB1).txt"
+SLA_output = Target_SLA_txt_file_output_information_and_sequence(file)
+print (SLA_output)
