@@ -50,11 +50,11 @@ with open(input_file_6, 'rt') as f:
     for line3 in seq5.split(">"):
         seq6.append(line3)
 
-#1KLU_c_chain = seq2[3]
-#3C5J_c_chain = seq4[3]
-#4X5W_c_chain = seq6[3]
+Template_1KLU_c_chain = seq2[3]
+Template_3C5J_c_chain = seq4[3]
+Template_4X5W_c_chain = seq6[3]
 #file.write(seqoutput)
 #file.close()
 
-print (seq2[3])
+
 
