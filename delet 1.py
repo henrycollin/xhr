@@ -55,6 +55,6 @@ Template_3C5J_c_chain = seq4[3]
 Template_4X5W_c_chain = seq6[3]
 #file.write(seqoutput)
 #file.close()
-
+print (Template_4X5W_c_chain)
 
 

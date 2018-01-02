@@ -7,7 +7,7 @@ Created on Mon Nov 27 12:34:05 2017
 
 ##### clustal omega inout file #####
 
-import os, re
+import os, re, sys
 
 def Template_HLA_txt_file_pir_plus_pir_fusion():
     #file = os.path.abspath("C:\\Users\\bio608\\Documents\\GitHub\\xhr\\template_and_target_file\\1KLU.txt")
@@ -107,7 +107,7 @@ def clustal_omega_input_file_pir_plus_pir_fusion():
     return file_prepare_A_chain, file_prepare_B_chain
     
 def Target_SLA_txt_file_output_information_and_sequence(fn):
-    #input_file = input("Enter the path of your SLA.txt sequence file (ex.C:Users\Desttop\input_file.txt):")
+    #input_file = input("Enter the path of your SLA.txt sequence file (ex.C:Users\DesKtop\input_file.txt):")
     #with open (input_file, "r+") as f:
     #with open ("C:\\Users\\bio608\\Documents\\GitHub\\xhr\\MHC_IPD0006004_Sus_scrofa_MHC_antigen_(DRB1).txt", "r+") as f:
     with open (fn, "rt") as f:
@@ -140,4 +140,56 @@ def Target_SLA_txt_file_output_information_and_sequence(fn):
     Target_SLA_imformation_DRB = seq6[0]
     
     return Target_SLA_sequence_DRA, Target_SLA_sequence_DRB, Target_SLA_imformation_DRA, Target_SLA_imformation_DRB
+
+def Template_fasta_txt_file_C_chain_information():
+    #input_file = input("Enter the path of your HLA.txt sequence file (ex.C:Users\Desttop\input_file.txt):")
+    #with open (input_file, "r+") as f:
+    input_file_4 = "C:\\Users\\bio608\\Documents\\GitHub\\xhr\\template_and_target_file\\1KLU.txt"
+    input_file_5 = "C:\\Users\\bio608\\Documents\\GitHub\\xhr\\template_and_target_file\\3C5J.txt"
+    input_file_6 = "C:\\Users\\bio608\\Documents\\GitHub\\xhr\\template_and_target_file\\4X5W.txt"
+    input_file_7 = "C:\\Users\\bio608\\Documents\\GitHub\\xhr\\testfile.txt"
+    
+        
+    with open(input_file_4, 'rt') as f:
+        file = open("testfile.txt", "w")
+        seq1 = list()
+        seq2 = list()
+        #select_c = "C|PDBID"
+        
+        for line1 in f.readlines():
+            seq1.append(line1)
+        seq1 = ''.join(str(e) for e in seq1)
+        for line3 in seq1.split(">"):
+            seq2.append(line3)
+            
+    with open(input_file_5, 'rt') as f:
+        file = open("testfile.txt", "a")
+        seq3 = list()
+        seq4 = list()
+        #select_c = "C|PDBID"
+        
+        for line1 in f.readlines():
+            seq3.append(line1)
+        seq3 = ''.join(str(e) for e in seq3)
+        for line3 in seq3.split(">"):
+            seq4.append(line3)
+
+    with open(input_file_6, 'rt') as f:
+        file = open("testfile.txt", "a")
+        seq5 = list()
+        seq6 = list()
+        #select_c = "C|PDBID"
+    
+        for line1 in f.readlines():
+            seq5.append(line1)
+        seq5 = ''.join(str(e) for e in seq5)
+        for line3 in seq5.split(">"):
+            seq6.append(line3)
+            
+    Template_1KLU_c_chain = seq2[3]
+    Template_3C5J_c_chain = seq4[3]
+    Template_4X5W_c_chain = seq6[3]
+    #file.write(seqoutput)
+    #file.close()
+    return Template_1KLU_c_chain, Template_3C5J_c_chain, Template_4X5W_c_chain
 
